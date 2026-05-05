@@ -3,17 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Athlete Build · 78-week protocol</title>
+<title>Athlete Build · personal protocol</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1a1a1a;
     --paper: #f5f1e8;
     --paper-2: #ebe5d4;
     --paper-3: #e0d8c2;
-    --rule: #1a1a1a;
     --muted: #6b6258;
     --accent: #c8472a;
     --accent-2: #2d4a3e;
@@ -21,7 +20,6 @@
     --check: #2d4a3e;
     --serif: 'Fraunces', Georgia, serif;
     --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', -apple-system, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +56,6 @@
   header.masthead {
     border-bottom: 3px double var(--ink);
     padding: 28px 0 20px;
-    margin-bottom: 0;
   }
 
   .masthead-inner {
@@ -159,7 +156,6 @@
   .stat {
     background: var(--paper);
     padding: 20px 18px;
-    text-align: left;
   }
 
   .stat-label {
@@ -202,10 +198,27 @@
     transition: right 0.5s cubic-bezier(0.2, 0, 0.2, 1);
   }
 
+  .advisory {
+    background: var(--paper-2);
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    margin: 28px 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .advisory-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
   nav.phase-nav {
     border-bottom: 1px solid var(--ink);
-    padding: 0;
-    margin: 0;
     display: flex;
     overflow-x: auto;
     background: var(--paper);
@@ -268,15 +281,13 @@
     font-weight: 500;
   }
 
-  main {
-    padding: 56px 0 96px;
-  }
+  main { padding: 56px 0 96px; }
 
   .phase-header {
     display: grid;
     grid-template-columns: 80px 1fr;
     gap: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     padding-bottom: 32px;
     border-bottom: 1px solid var(--ink);
   }
@@ -327,7 +338,6 @@
 
   .section-block {
     margin-bottom: 48px;
-    page-break-inside: avoid;
   }
 
   .section-head {
@@ -345,10 +355,7 @@
     font-size: 28px;
     font-weight: 500;
     line-height: 1.1;
-    letter-spacing: -0.005em;
   }
-
-  .section-title em { font-style: italic; }
 
   .section-progress {
     font-family: var(--mono);
@@ -360,14 +367,9 @@
   }
 
   .section-block.milestone .section-title { color: var(--accent-2); }
-  .section-block.milestone .section-title::before {
-    content: '◆ ';
-    color: var(--gold);
-  }
+  .section-block.milestone .section-title::before { content: '◆ '; color: var(--gold); }
 
-  .exercise-list {
-    list-style: none;
-  }
+  .exercise-list { list-style: none; }
 
   .exercise-row {
     display: grid;
@@ -391,7 +393,6 @@
     font-family: var(--mono);
     font-size: 11px;
     color: var(--muted);
-    letter-spacing: 0.05em;
     text-align: right;
   }
 
@@ -444,6 +445,14 @@
     letter-spacing: 0.05em;
   }
 
+  .exercise-note {
+    display: block;
+    font-size: 13px;
+    color: var(--accent-2);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
   .video-link {
     font-family: var(--mono);
     font-size: 10px;
@@ -483,7 +492,6 @@
   .footnote p {
     font-size: 14px;
     line-height: 1.5;
-    color: var(--ink);
   }
 
   .toast {
@@ -534,13 +542,13 @@
   <div class="container">
     <div class="masthead-inner">
       <div>
-        <div class="masthead-meta">Vol. 01 · A 78-week training protocol · Edition I</div>
+        <div class="masthead-meta">A 90-week training protocol · Edition I</div>
         <h1 class="masthead-title">Athlete <em>Build</em></h1>
       </div>
       <div class="masthead-actions">
         <button class="btn" id="exportBtn" title="Download progress as JSON">Export</button>
         <label class="btn" for="importInput" title="Load progress from JSON file">Import</label>
-        <input type="file" id="importInput" accept=".json,.md,application/json,text/markdown">
+        <input type="file" id="importInput" accept=".json,application/json">
         <button class="btn danger" id="resetBtn" title="Clear all progress">Reset</button>
       </div>
     </div>
@@ -550,7 +558,12 @@
 <section class="hero">
   <div class="container" style="display: contents;">
     <div class="container">
-      <p class="hero-lede">A trackable strength and conditioning program built around four-to-five days of badminton, weekend trail runs and tennis. Two-to-three gym sessions a week, four phases, visible change at every hundred-day mark. The gym never competes with the sport — it builds the body that holds the result.</p>
+      <p class="hero-lede">A trackable strength and conditioning protocol for athletes who already train hard in their sport four-to-five days a week. Joint-friendly throughout, paced for recovery, gated on bodyweight where impact matters. The gym never competes with the sport — it builds the body underneath.</p>
+
+      <div class="advisory">
+        <div class="advisory-label">Before you start</div>
+        If you're new to lifting, returning after a long break, carrying significant bodyweight, or managing any health condition, get cleared by a doctor first. Consider basic bloodwork as a baseline. For nutrition, work with a registered dietitian — the training plan below assumes nutrition is handled in parallel by someone qualified to look at your full picture.
+      </div>
     </div>
     <div class="container">
       <div class="hero-stats">
@@ -586,19 +599,19 @@
     <div class="footnote">
       <div>
         <h4>Recovery rule</h4>
-        <p>If badminton was hard yesterday, push the gym session by a day rather than train tired. One injury sets you back further than three deloads.</p>
+        <p>If your sport session was hard yesterday, push the gym session by a day rather than train tired. Recovery is the limiting factor — respect it. One injury sets you back further than three deloads.</p>
       </div>
       <div>
         <h4>Progression rule</h4>
-        <p>Hit the top of the rep range with clean form, then add the smallest weight increment available. Slow, unsexy, works for years.</p>
+        <p>Hit the top of the rep range with clean form, then add the smallest weight increment available. Slow, unsexy, works for years. Bodyweight progressions get easier as you lean out — be patient.</p>
       </div>
       <div>
-        <h4>Fat-loss rule</h4>
-        <p>1.6–2.0 g protein per kg bodyweight, daily. ~300–500 kcal deficit. 8–10k steps on non-sport days. Don't add cardio — your sport already covers it.</p>
+        <h4>Nutrition (talk to a pro)</h4>
+        <p>Training builds the body, food reveals it. Protein 1.6–2.0 g/kg bodyweight daily, modest deficit if losing fat, work with a registered dietitian for anything beyond the basics.</p>
       </div>
       <div>
         <h4>The 100-day rhythm</h4>
-        <p>Day 100: face leaner. Day 200: shoulder shape. Day 400: clearly athletic. Day 550: lean, defined, peak. Photos lie less than scales.</p>
+        <p>Visible change compounds every ~100 days. Take photos at week 0, 14, 28, 42, 56, 78. Photos lie less than scales, especially across phases of muscle gain and fat loss.</p>
       </div>
     </div>
   </div>
@@ -612,26 +625,28 @@ const yt = q => 'https://www.youtube.com/results?search_query=' + encodeURICompo
 const PROGRAM = {
   1: {
     title: "Foundation",
-    italic: "movement quality, base strength, habit",
-    weeks: "Weeks 1–14",
+    italic: "movement, habit, joint armor",
+    weeks: "Phase 1 · 90 days",
     days: "2 sessions / week",
-    intent: "You can't progress what you can't perform. Phase one locks in technique, builds the habit, and lays the strength foundation that the next three phases compound on.",
+    intent: "First 90 days: build the pattern, earn the habit. If you're new to lifting or carrying meaningful bodyweight, your joints already work hard during sport — phase one builds supporting strength and tendon resilience without piling on impact. Bilateral barbell work, jumps, and high-impact plyos are deliberately absent. Machines and supported variations dominate. The goal is ninety days of consistent, pain-free training that quietly prepares you for everything that comes next.",
     sections: [
       { name: "Day A · full body, lower-biased", items: [
-        { text: "Goblet squat", meta: "3 × 8–10 · target 3×10 @ 20kg full depth", video: yt("goblet squat form squat university") },
-        { text: "Romanian deadlift (DB or KB)", meta: "3 × 8–10 · form before load", video: yt("dumbbell romanian deadlift form jeff nippard") },
+        { text: "Goblet box squat to high box", meta: "3 × 10 · sit to box, controlled eccentric · +2.5kg at 3×10 clean", note: "Box height = above parallel. Builds squat pattern without depth stress.", video: yt("goblet box squat form to box") },
+        { text: "Hip thrust (DB or BB on lap)", meta: "3 × 10 · +5kg at 3×10 clean", note: "Single best glute exercise. Direct transfer to badminton lunges.", video: yt("hip thrust form bret contreras") },
+        { text: "Leg press", meta: "3 × 10–12 · +5kg per side at 3×12 clean", note: "Back-supported. Safer than back squat at your starting weight.", video: yt("leg press proper form technique") },
+        { text: "Seated cable row", meta: "3 × 10 · +5kg at 3×10 clean", video: yt("seated cable row form technique") },
         { text: "Dumbbell bench press", meta: "3 × 8–10 · +1kg/DB at 3×10", video: yt("dumbbell bench press proper form") },
-        { text: "One-arm dumbbell row", meta: "3 × 10 each side · +2kg when easy", video: yt("one arm dumbbell row form technique") },
-        { text: "Dead bug", meta: "3 × 8 each side · pause 2s when 3×8 easy", video: yt("dead bug exercise core form") },
-        { text: "Side plank", meta: "2 × 20–30s each · +5s when steady", video: yt("side plank proper form technique") },
+        { text: "Dead bug", meta: "3 × 8 each side · pause 2s when easy", video: yt("dead bug exercise core form") },
+        { text: "Side plank from knees", meta: "2 × 20s each → progress to full", note: "Start from knees. Progress to full side plank when 30s feels easy.", video: yt("side plank form modified knees") },
       ]},
       { name: "Day B · full body, upper-biased", items: [
-        { text: "Dumbbell reverse lunge", meta: "3 × 8 each · +1kg/DB when clean", video: yt("dumbbell reverse lunge form") },
-        { text: "Hip thrust", meta: "3 × 10 · +5kg at 3×10 clean", video: yt("hip thrust form bret contreras") },
-        { text: "Dumbbell shoulder press", meta: "3 × 8–10 · +1kg/DB at 3×10", video: yt("dumbbell shoulder press form seated") },
-        { text: "Lat pulldown or assisted pull-up", meta: "3 × 8–10 · reduce assistance / add load", video: yt("lat pulldown proper form technique") },
+        { text: "Reverse lunge holding rail", meta: "3 × 8 each, bodyweight first · +DB when steady", note: "Hold a rail or rack lightly for balance. Build the pattern first.", video: yt("reverse lunge form bodyweight") },
+        { text: "45-degree back extension", meta: "3 × 12 · bodyweight first, then hold plate", note: "Builds posterior chain without spinal loading. Excellent for badminton.", video: yt("45 degree back extension form") },
+        { text: "Lat pulldown", meta: "3 × 10 · +5kg at 3×10 clean", video: yt("lat pulldown proper form technique") },
+        { text: "Machine shoulder press or DB seated press", meta: "3 × 8–10 · +1kg/DB at 3×10", video: yt("seated dumbbell shoulder press form") },
+        { text: "Chest-supported row (machine or bench)", meta: "3 × 10 · +5kg at 3×10", video: yt("chest supported row form") },
         { text: "Pallof press", meta: "3 × 10 each · add band tension", video: yt("pallof press exercise anti rotation core") },
-        { text: "Farmer carry", meta: "3 × 30s · +2.5kg/hand when grip holds", video: yt("farmer carry walk form technique") },
+        { text: "Farmer carry", meta: "3 × 30s · +2.5kg/hand when grip holds", note: "Pure ROI — grip strength, postural endurance, core. Don't skip.", video: yt("farmer carry walk form technique") },
       ]},
       { name: "Pre-lift mobility · 8 minutes, every gym day", items: [
         { text: "World's greatest stretch", meta: "5 each side", video: yt("worlds greatest stretch mobility") },
@@ -640,92 +655,101 @@ const PROGRAM = {
         { text: "Scapular CARs", meta: "5 each", video: yt("scapular CARs controlled articular rotations") },
         { text: "Ankle rocks", meta: "10 each", video: yt("ankle mobility rocks dorsiflexion") },
       ]},
-      { name: "Phase 1 graduation · ~day 100", milestone: true, items: [
-        { text: "Goblet squat 3×10 @ 20kg+ at full depth" },
-        { text: "RDL 3×10 @ 20kg DBs, no lower-back rounding" },
-        { text: "Push-ups 3×10 strict" },
-        { text: "One-arm row 3×10 @ 20kg+" },
-        { text: "Side plank 45s each side, steady" },
-        { text: "Two months without missing more than one session" },
-        { text: "Resting heart rate dropped 3–8 bpm" },
-        { text: "Week 14 photos: visible jaw and waistline change" },
+      { name: "Steps target · all rest days", items: [
+        { text: "10,000–12,000 steps on non-sport days", meta: "single biggest fat-loss lever right now", note: "Walk after dinner. Walk to errands. NEAT compounds quietly into kilograms." },
+      ]},
+      { name: "Phase 1 graduation · day 90 checkpoint", milestone: true, items: [
+        { text: "Body composition trending in the right direction (track via photos + measurements, not just scale)" },
+        { text: "Goblet box squat 3×10 with controlled tempo, full range" },
+        { text: "Hip thrust 3×10 at meaningful load (BW × 0.4 minimum)" },
+        { text: "Leg press 3×12 at moderate load, no knee pain" },
+        { text: "Lat pulldown 3×10 at meaningful load" },
+        { text: "Side plank 30s each side, full position" },
+        { text: "Hit step target 5+ days/week consistently" },
+        { text: "90 days without missing more than 3 sessions total" },
+        { text: "Resting HR dropped noticeably (5–10 bpm)" },
+        { text: "Bloodwork done if recommended; nutrition strategy in place" },
+        { text: "Day 90 photos: visible change vs day 0" },
       ]},
     ]
   },
   2: {
     title: "Build",
-    italic: "strength and work capacity",
-    weeks: "Weeks 15–32",
+    italic: "real strength enters",
+    weeks: "Phase 2 · 90 days",
     days: "3 sessions / week",
-    intent: "You're now strong enough to handle real compound lifts. A third day arrives — short conditioning that doubles as your fat-loss accelerator. Heart rate up, rest short, recovery still respected.",
+    intent: "Days 91–180: Phase 1 grooved the patterns. Now real compound work enters. Barbell back squat introduced cautiously, conditioning becomes a true third day. Heart rate up, rest short. This is where the body underneath starts to show, and where sport feels noticeably easier in the late stages of a match.",
     sections: [
       { name: "Day A · lower strength", items: [
-        { text: "Back squat", meta: "4 × 5 · +2.5kg when 4×5 clean", video: yt("back squat form squat university") },
-        { text: "Romanian deadlift", meta: "3 × 8 · +2.5kg at 3×8 clean", video: yt("barbell romanian deadlift form") },
+        { text: "Goblet squat to bench", meta: "3 × 8 warm-up sets, then introduce back squat at week 22", video: yt("goblet squat form squat university") },
+        { text: "Back squat (introduce week 22, build slowly)", meta: "4 × 5 · start with empty bar, +2.5kg per week if pain-free", note: "Only progress when last week was clean. No ego, no rushing.", video: yt("back squat form squat university") },
+        { text: "Romanian deadlift (DB)", meta: "3 × 8 · +2.5kg at 3×8 clean", video: yt("dumbbell romanian deadlift form") },
         { text: "Bulgarian split squat", meta: "3 × 8 each · +1kg/DB when clean", video: yt("bulgarian split squat form technique") },
-        { text: "Standing calf raise", meta: "3 × 12 · +5kg when clean", video: yt("standing calf raise form technique") },
-        { text: "Hanging knee raise", meta: "3 × 8 → progress to leg raise", video: yt("hanging knee raise form core") },
+        { text: "Standing calf raise", meta: "3 × 12 · +5kg at 3×12 clean", video: yt("standing calf raise form technique") },
+        { text: "Hanging knee raise", meta: "3 × 6–8 · build to 12, then weighted", video: yt("hanging knee raise form core") },
       ]},
       { name: "Day B · upper strength", items: [
         { text: "Bench press (barbell)", meta: "4 × 5 · +2.5kg when 4×5 clean", video: yt("bench press form jeff nippard") },
-        { text: "Pull-up", meta: "4 × 5–8 · reduce assistance", video: yt("pull up form technique strict") },
-        { text: "Overhead press", meta: "3 × 6–8 · +1kg/DB at 3×8", video: yt("overhead press form barbell standing") },
+        { text: "Pull-up (assisted machine)", meta: "4 × 5–8 · reduce assistance over time", note: "Pull-ups get easier as you lean out and build pulling strength. Be patient — this is one of the slowest-progressing lifts.", video: yt("assisted pull up machine form") },
+        { text: "Overhead press (DB or BB)", meta: "3 × 6–8 · +1kg/DB at 3×8", video: yt("overhead press form barbell standing") },
         { text: "Chest-supported row", meta: "3 × 8–10 · +2.5kg when clean", video: yt("chest supported row form technique") },
         { text: "Face pull", meta: "3 × 12 · build to 15 then load", video: yt("face pull form rear delt cable") },
       ]},
       { name: "Day C · conditioning + accessory · 45 min", items: [
         { text: "Easy bike or row warm-up", meta: "5 minutes" },
         { text: "Strength circuit ×3 rounds", meta: "KB swing 12 / push-up 10 / goblet squat 10 / plank 30s", video: yt("kettlebell swing form hardstyle") },
-        { text: "EMOM 12 minutes", meta: "row 15cal / 8 burpees / 12 KB swings × 4 rounds", video: yt("burpee proper form technique") },
+        { text: "EMOM 12 minutes (start at 8 if too much)", meta: "row 12cal / 6 burpees from elevated surface / 10 KB swings", note: "Burpees from a bench-height surface reduce wrist and knee load — use this option if standard burpees feel high-impact.", video: yt("elevated burpee form modified") },
         { text: "Cooldown walk + breathing", meta: "5 minutes" },
       ]},
-      { name: "Phase 2 graduation · ~day 200", milestone: true, items: [
-        { text: "Back squat 4×5 at bodyweight on the bar" },
-        { text: "Bench press 4×5 at 0.6× bodyweight" },
-        { text: "Pull-up 5 strict reps unassisted" },
-        { text: "RDL 3×8 at 0.7× bodyweight" },
+      { name: "Phase 2 graduation · day 180 checkpoint", milestone: true, items: [
+        { text: "Body composition continues trending in the right direction" },
+        { text: "Back squat 4×5 at 0.7× current bodyweight, pain-free" },
+        { text: "Bench press 4×5 at 0.6× current bodyweight" },
+        { text: "Pull-up: 3 strict reps unassisted" },
+        { text: "RDL 3×8 at 0.6× current bodyweight" },
         { text: "Resting HR ≤ 65 bpm" },
         { text: "EMOM 12 conditioning unmodified" },
-        { text: "Less fatigued in 3rd game of badminton" },
-        { text: "Visible shoulder/back shape, tighter midsection" },
+        { text: "Less fatigued in late stages of sport, faster recovery between sessions" },
+        { text: "Visible shoulder/back shape, defined waist" },
       ]},
     ]
   },
   3: {
     title: "Develop",
-    italic: "strength, power, leaner",
-    weeks: "Weeks 33–56",
+    italic: "power, leaner, sport transfer",
+    weeks: "Phase 3 · 90 days",
     days: "3 sessions / week",
-    intent: "The phase where the gym openly amplifies your sport. Power work, lateral mechanics, heavier compounds. Court coverage gets faster. Lateral changes feel springy. The body underneath finally shows.",
+    intent: "Days 181–270: The phase where the gym openly amplifies your sport. Power work, lateral mechanics, heavier compounds. Plyometrics enter only when bodyweight and joint readiness allow — landing forces matter. Court coverage gets faster. Lateral changes feel springy. The body underneath finally shows.",
     sections: [
       { name: "Day A · lower power + strength", items: [
-        { text: "Box jump or broad jump", meta: "4 × 3 · explode, land soft", video: yt("box jump form technique power") },
+        { text: "Box step-down or low box jump", meta: "4 × 3 · low box first, progress when ready", note: "If you're carrying significant bodyweight or new to plyometrics, start with step-downs. Step-downs build the same eccentric strength without impact. Add jumps when bodyweight and joints are ready.", video: yt("box step down eccentric exercise") },
         { text: "Back squat", meta: "5 × 3–5 · +2.5kg every 2 weeks", video: yt("back squat heavy form technique") },
-        { text: "Trap-bar deadlift", meta: "4 × 5 · +5kg when 4×5 clean", video: yt("trap bar deadlift form technique") },
+        { text: "Trap-bar deadlift", meta: "4 × 5 · +5kg when 4×5 clean", note: "Trap-bar is gentler on the spine than conventional. Stick with it.", video: yt("trap bar deadlift form technique") },
         { text: "Lateral lunge", meta: "3 × 6 each · direct badminton transfer", video: yt("lateral lunge form side lunge") },
         { text: "Copenhagen plank", meta: "3 × 15s each → 30s · adductor armor", video: yt("copenhagen plank adductor exercise") },
       ]},
       { name: "Day B · upper power + strength", items: [
         { text: "Med ball slam or rotational throw", meta: "4 × 5 · power is intent — throw hard", video: yt("medicine ball slam rotational throw") },
         { text: "Bench press", meta: "5 × 3–5 · +2.5kg every 2 weeks", video: yt("bench press heavy form technique") },
-        { text: "Weighted pull-up", meta: "4 × 5 · +2.5kg when 4×5 clean", video: yt("weighted pull up form technique") },
+        { text: "Weighted pull-up (when 5 strict reps cleared)", meta: "4 × 5 · +2.5kg when 4×5 clean", video: yt("weighted pull up form technique") },
         { text: "Single-arm landmine press", meta: "3 × 6 each · +2.5kg when clean", video: yt("single arm landmine press form") },
         { text: "Cable woodchop", meta: "3 × 8 each · build reps then load", video: yt("cable woodchop rotational core exercise") },
       ]},
       { name: "Day C · sport conditioning", items: [
         { text: "Bike + dynamic mobility warm-up", meta: "5 minutes" },
-        { text: "Lateral bound", meta: "4 × 6 each side", video: yt("lateral bound plyometric exercise") },
-        { text: "Skater hop", meta: "4 × 10", video: yt("skater hop plyometric exercise") },
+        { text: "Lateral bound", meta: "4 × 6 each · only when ready for plyometrics", video: yt("lateral bound plyometric exercise") },
+        { text: "Skater hop", meta: "4 × 10 · only when ready for plyometrics", video: yt("skater hop plyometric exercise") },
         { text: "Side plank reach", meta: "4 × 8 each", video: yt("side plank reach through exercise") },
-        { text: "VO2 intervals", meta: "5 × 3min hard / 90s easy", video: yt("VO2 max intervals running rowing") },
+        { text: "VO2 intervals", meta: "5 × 3min hard / 90s easy · use bike if knees feel anything", video: yt("VO2 max intervals running rowing") },
         { text: "Cooldown + foam roll", meta: "5 minutes" },
       ]},
-      { name: "Phase 3 graduation · ~day 400", milestone: true, items: [
-        { text: "Back squat 5×3 at 1.2× bodyweight" },
-        { text: "Trap-bar deadlift 4×5 at 1.4× bodyweight" },
-        { text: "Bench 5×3 at 0.8× bodyweight" },
-        { text: "Weighted pull-up 5 reps with 10kg" },
-        { text: "Box jump 60cm+ consistent" },
+      { name: "Phase 3 graduation · day 270 checkpoint", milestone: true, items: [
+        { text: "Body composition meaningfully changed from baseline" },
+        { text: "Back squat 5×3 at 1.0× current bodyweight" },
+        { text: "Trap-bar deadlift 4×5 at 1.3× current bodyweight" },
+        { text: "Bench 5×3 at 0.7× current bodyweight" },
+        { text: "Weighted pull-up 5 reps with 5–10kg" },
+        { text: "Box jump 40cm+ consistent (if cleared for jumps)" },
         { text: "VO2 session: no pace drop round-to-round" },
         { text: "Court coverage faster, lateral feels springy" },
         { text: "Visible muscle definition; abs partially visible" },
@@ -734,10 +758,10 @@ const PROGRAM = {
   },
   4: {
     title: "Refine",
-    italic: "maintain strength, peak conditioning",
-    weeks: "Weeks 57–78+",
+    italic: "maintain, peak, autoregulate",
+    weeks: "Phase 4 · 90+ days",
     days: "2–3 sessions / week",
-    intent: "You're advanced. Linear progression ends. The work now is maintaining what you've built while peaking conditioning for the sport. Auto-regulate. Heavy day only when you feel it.",
+    intent: "Days 271+: You're advanced. Linear progression ends. The work now is maintaining what you've built while peaking conditioning for sport. Auto-regulate. Heavy day only when you feel it. Body composition continues to refine slowly toward whatever performs and looks the way you want. This phase continues until you reach your target — there's no end date. It's the sustainable rhythm you keep forever.",
     sections: [
       { name: "Auto-regulated structure", items: [
         { text: "Compound lifts 3×3–5 at 80–85%", meta: "maintain, don't push" },
@@ -745,18 +769,19 @@ const PROGRAM = {
         { text: "Power and lateral work stay at full volume", meta: "highest sport transfer" },
         { text: "Conditioning rotates 2-week blocks", meta: "VO2 → tempo → long easy → repeat" },
       ]},
-      { name: "Phase 4 graduation · ~day 550", milestone: true, items: [
+      { name: "Phase 4 graduation · ongoing, day 360+ checkpoint", milestone: true, items: [
+        { text: "Body composition reached (or close to) the target you set" },
         { text: "All phase 3 lifts maintained within 5%" },
         { text: "Trail run 10km comfortable, hike with elevation no soreness" },
         { text: "Tennis: full match without late-set fatigue" },
-        { text: "Badminton 5x/week sustainable, no tweaks or strains" },
+        { text: "Sport sustainable 4–5× a week, no chronic tweaks or strains" },
         { text: "Lean, defined, athletic — visibly different person from week 1" },
       ]},
     ]
   }
 };
 
-const STATE_KEY = 'athlete_build_v3';
+const STATE_KEY = 'athlete_build_v4';
 let state = { phase: 1, checked: {} };
 let currentPhase = 1;
 
@@ -824,7 +849,7 @@ function renderHeader() {
       <div class="phase-tags">
         <span class="phase-tag">${phase.weeks}</span>
         <span class="phase-tag">${phase.days}</span>
-        <span class="phase-tag">Deload week 7 / 14</span>
+        <span class="phase-tag">Deload week 4 and 8 of each phase</span>
       </div>
     </div>
   `;
@@ -866,6 +891,7 @@ function renderContent() {
         <div>
           <div class="exercise-text">${item.text}</div>
           ${item.meta ? `<span class="exercise-meta">${item.meta}</span>` : ''}
+          ${item.note ? `<span class="exercise-note">${item.note}</span>` : ''}
         </div>
         ${item.video ? `<a class="video-link" href="${item.video}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Watch</a>` : '<span></span>'}
       `;
@@ -911,7 +937,7 @@ function showToast(msg, isError) {
 
 document.getElementById('exportBtn').addEventListener('click', () => {
   const payload = {
-    schema: 'athlete-build-v3',
+    schema: 'athlete-build-v4',
     exportedAt: new Date().toISOString(),
     phase: state.phase,
     checked: state.checked,
@@ -932,12 +958,7 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
   if (!file) return;
   try {
     const text = await file.text();
-    let parsed;
-    if (file.name.endsWith('.md')) {
-      parsed = parseMarkdownProgress(text);
-    } else {
-      parsed = JSON.parse(text);
-    }
+    const parsed = JSON.parse(text);
     if (parsed && typeof parsed.checked === 'object') {
       state.checked = parsed.checked || {};
       if (parsed.phase) state.phase = parsed.phase;
@@ -953,42 +974,6 @@ document.getElementById('importInput').addEventListener('change', async (e) => {
   }
   e.target.value = '';
 });
-
-function parseMarkdownProgress(md) {
-  const checked = {};
-  let phase = 1;
-  const phaseMatch = md.match(/(?:current\s*phase|phase)[:\s]*([1-4])/i);
-  if (phaseMatch) phase = parseInt(phaseMatch[1]);
-  const lines = md.split('\n');
-  let currentP = phase, currentS = -1, itemIdx = 0;
-  for (const line of lines) {
-    const pm = line.match(/^##?\s*phase\s*([1-4])/i);
-    if (pm) { currentP = parseInt(pm[1]); currentS = -1; continue; }
-    const sm = line.match(/^###\s+(.+)$/);
-    if (sm) {
-      const sectionName = sm[1].trim();
-      currentS = -1; itemIdx = 0;
-      const phaseObj = PROGRAM[currentP];
-      if (phaseObj) {
-        phaseObj.sections.forEach((sec, si) => {
-          if (sec.name.toLowerCase().includes(sectionName.toLowerCase().slice(0, 12)) ||
-              sectionName.toLowerCase().includes(sec.name.toLowerCase().slice(0, 12))) {
-            currentS = si;
-          }
-        });
-      }
-      continue;
-    }
-    const taskMatch = line.match(/^\s*-\s*\[([ xX])\]\s*(.+)$/);
-    if (taskMatch && currentS >= 0) {
-      if (taskMatch[1].toLowerCase() === 'x') {
-        checked[keyFor(currentP, currentS, itemIdx)] = true;
-      }
-      itemIdx++;
-    }
-  }
-  return { phase, checked };
-}
 
 document.getElementById('resetBtn').addEventListener('click', () => {
   if (confirm('Reset all progress across all phases? This cannot be undone.')) {
