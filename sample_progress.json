@@ -1,0 +1,19 @@
+{
+  "schema": "athlete-build-v3",
+  "exportedAt": "2026-05-05T00:00:00.000Z",
+  "phase": 1,
+  "checked": {
+    "p1|s0|i0": true,
+    "p1|s0|i1": true,
+    "p1|s2|i0": true,
+    "p1|s2|i1": true,
+    "p1|s2|i2": true
+  },
+  "_format_notes": [
+    "schema: always 'athlete-build-v3' for this version",
+    "phase: integer 1-4, the phase you're currently working in",
+    "checked: object with keys like 'pX|sY|iZ' where X=phase, Y=section index, Z=item index, value true means checked",
+    "Editing this file by hand and re-importing will sync your progress",
+    "Delete '_format_notes' before importing — it's only for documentation"
+  ]
+}
